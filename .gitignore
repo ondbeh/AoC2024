@@ -1,8 +1,21 @@
 .vscode/
 *a.out
 .idea/
+.vs/
 AoC14/AoC14
 AoC14/AoC14_debug
 AoC15/AoC15_?
 AoC15/AoC15_debug_?
 */out.txt
+
+# Haskell
+*/dist/
+*/dist-newstyle/
+
+
+# Object files
+*.o
+*.hi
+
+# Executables
+AoC??/app/Main

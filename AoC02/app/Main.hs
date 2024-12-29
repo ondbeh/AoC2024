@@ -20,6 +20,19 @@ isOrderedAndSafe cmp xs
 isSafe :: [Int] -> Bool
 isSafe line = isOrderedAndSafe (<) line || isOrderedAndSafe (>) line
 
+-- PART 2 FUNCTIONS
+
+-- Get all lists with one element removed
+removeOne :: [a] -> [[a]]
+removeOne [] = []
+removeOne (x:xs) = xs : map (x:) (removeOne xs)
+
+-- Check if the list is safe with one element removed
+isSafeWithDampener :: [Int] -> Bool
+isSafeWithDampener line
+    | isSafe line = True
+    | otherwise = any isSafe (removeOne line)
+
 main :: IO ()
 main = do
     -- Read the contents of the file
@@ -30,3 +43,7 @@ main = do
     let result1 = length $ filter isSafe reports
     -- Print the result
     putStrLn $ "Result part 1: " ++ show result1
+    -- Filter the lines to find only safe lines with one element removed and count them
+    let result2 = length $ filter isSafeWithDampener reports
+    -- Print the result
+    putStrLn $ "Result part 2: " ++ show result2
